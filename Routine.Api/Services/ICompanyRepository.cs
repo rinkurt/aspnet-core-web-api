@@ -6,7 +6,7 @@ using Routine.Api.Entities;
 
 namespace Routine.Api.Services
 {
-	interface ICompanyRepository
+	public interface ICompanyRepository
 	{
 		Task<IEnumerable<Company>> GetCompaniesAsync();
 		Task<Company> GetCompanyAsync(Guid companyId);
