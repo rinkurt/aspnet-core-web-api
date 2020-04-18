@@ -91,6 +91,68 @@ namespace Routine.Api.Migrations
                     b.HasIndex("CompanyId");
 
                     b.ToTable("Employees");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("4b501cb3-d168-4cc0-b375-48fb33f318a4"),
+                            CompanyId = new Guid("0c131a59-dbec-4527-a92a-daeb910efecb"),
+                            DateOfBirth = new DateTime(1976, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EmployeeNo = "MSFT231",
+                            FirstName = "Nick",
+                            Gender = 1,
+                            LastName = "Carter"
+                        },
+                        new
+                        {
+                            Id = new Guid("7eaa532c-1be5-472c-a738-94fd26e5fad6"),
+                            CompanyId = new Guid("0c131a59-dbec-4527-a92a-daeb910efecb"),
+                            DateOfBirth = new DateTime(1981, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EmployeeNo = "MSFT245",
+                            FirstName = "Vince",
+                            Gender = 1,
+                            LastName = "Carter"
+                        },
+                        new
+                        {
+                            Id = new Guid("72457e73-ea34-4e02-b575-8d384e82a481"),
+                            CompanyId = new Guid("080d684e-21aa-46d8-8eb8-8c6709879f59"),
+                            DateOfBirth = new DateTime(1986, 11, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EmployeeNo = "G003",
+                            FirstName = "Mary",
+                            Gender = 2,
+                            LastName = "King"
+                        },
+                        new
+                        {
+                            Id = new Guid("7644b71d-d74e-43e2-ac32-8cbadd7b1c3a"),
+                            CompanyId = new Guid("080d684e-21aa-46d8-8eb8-8c6709879f59"),
+                            DateOfBirth = new DateTime(1977, 4, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EmployeeNo = "G097",
+                            FirstName = "Kevin",
+                            Gender = 1,
+                            LastName = "Richardson"
+                        },
+                        new
+                        {
+                            Id = new Guid("679dfd33-32e4-4393-b061-f7abb8956f53"),
+                            CompanyId = new Guid("d76af422-8f46-429c-b576-ad4d62216861"),
+                            DateOfBirth = new DateTime(1967, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EmployeeNo = "A009",
+                            FirstName = "卡",
+                            Gender = 2,
+                            LastName = "里"
+                        },
+                        new
+                        {
+                            Id = new Guid("1861341e-b42b-410c-ae21-cf11f36fc574"),
+                            CompanyId = new Guid("d76af422-8f46-429c-b576-ad4d62216861"),
+                            DateOfBirth = new DateTime(1957, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EmployeeNo = "A404",
+                            FirstName = "Not",
+                            Gender = 1,
+                            LastName = "Man"
+                        });
                 });
 
             modelBuilder.Entity("Routine.Api.Entities.Employee", b =>

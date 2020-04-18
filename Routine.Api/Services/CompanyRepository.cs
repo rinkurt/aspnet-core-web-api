@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Routine.Api.Data;
+using Routine.Api.DtoParams;
 using Routine.Api.Entities;
 
 namespace Routine.Api.Services
@@ -17,9 +18,28 @@ namespace Routine.Api.Services
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public async Task<IEnumerable<Company>> GetCompaniesAsync()
+        public async Task<IEnumerable<Company>> GetCompaniesAsync(CompanyDtoParam param)
         {
-	        return await _context.Companies.ToListAsync();
+	        if (param == null)
+	        {
+                throw new ArgumentNullException(nameof(CompanyDtoParam));
+	        }
+
+	        var items = _context.Companies.AsQueryable();
+
+	        if (!string.IsNullOrWhiteSpace(param.Name))
+	        {
+		        items = items.Where(x => x.Name == param.Name.Trim());
+	        }
+
+	        if (!string.IsNullOrWhiteSpace(param.Query))
+	        {
+		        param.Query = param.Query.Trim();
+		        items = items.Where(x => x.Name.Contains(param.Query) ||
+		                                 x.Introduction.Contains(param.Query));
+	        }
+
+	        return await items.ToListAsync();
         }
 
         public async Task<Company> GetCompanyAsync(Guid companyId)
@@ -92,17 +112,29 @@ namespace Routine.Api.Services
             return await _context.Companies.AnyAsync(x => x.Id == companyId);
         }
 
-        public async Task<IEnumerable<Employee>> GetEmployeesAsync(Guid companyId)
+        public async Task<IEnumerable<Employee>> GetEmployeesAsync(Guid companyId, EmployeeDtoParam param)
         {
             if (companyId == Guid.Empty)
             {
                 throw new ArgumentNullException(nameof(companyId));
             }
 
-            return await _context.Employees
-	            .Where(x => x.CompanyId == companyId)
-	            .OrderBy(x => x.EmployeeNo)
-	            .ToListAsync();
+            var items = _context.Employees.Where(x => x.CompanyId == companyId);
+
+            if (!string.IsNullOrWhiteSpace(param.Gender))
+            {
+	            var gender = Enum.Parse<Gender>(param.Gender.Trim());
+	            items = items.Where(x => x.Gender == gender);
+            }
+
+            if (!string.IsNullOrWhiteSpace(param.Query))
+            {
+	            items = items.Where(x => x.EmployeeNo.Contains(param.Query) ||
+	                                     x.FirstName.Contains(param.Query) || 
+	                                     x.LastName.Contains(param.Query));
+            }
+            
+            return await items.OrderBy(x => x.EmployeeNo).ToListAsync();
         }
 
         public async Task<Employee> GetEmployeeAsync(Guid companyId, Guid employeeId)

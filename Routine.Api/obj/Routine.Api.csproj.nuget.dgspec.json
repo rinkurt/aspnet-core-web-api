@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Workspace\\Rider\\Routine\\Routine.Api\\Routine.Api.csproj": {}
+    "D:\\Workspace\\dotNet\\Routine\\Routine.Api\\Routine.Api.csproj": {}
   },
   "projects": {
-    "D:\\Workspace\\Rider\\Routine\\Routine.Api\\Routine.Api.csproj": {
+    "D:\\Workspace\\dotNet\\Routine\\Routine.Api\\Routine.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Workspace\\Rider\\Routine\\Routine.Api\\Routine.Api.csproj",
+        "projectUniqueName": "D:\\Workspace\\dotNet\\Routine\\Routine.Api\\Routine.Api.csproj",
         "projectName": "Routine.Api",
-        "projectPath": "D:\\Workspace\\Rider\\Routine\\Routine.Api\\Routine.Api.csproj",
+        "projectPath": "D:\\Workspace\\dotNet\\Routine\\Routine.Api\\Routine.Api.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "D:\\Workspace\\Rider\\Routine\\Routine.Api\\obj\\",
+        "outputPath": "D:\\Workspace\\dotNet\\Routine\\Routine.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -38,6 +38,22 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Abstractions": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[3.1.3, )"
