@@ -24,6 +24,8 @@ namespace Routine.Api.Profiles
                     opt => opt.MapFrom(src => DateTime.Now.Year - src.DateOfBirth.Year));
 
             CreateMap<EmployeeAddDto, Employee>();
+            CreateMap<EmployeeUpdateDto, Employee>();
+
         }
     }
 }

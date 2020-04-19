@@ -7,7 +7,7 @@ using Routine.Api.Entities;
 
 namespace Routine.Api.Dtos
 {
-	public class EmployeeAddDto: EmployeeAddOrUpdateDto
+	public class EmployeeUpdateDto: EmployeeAddOrUpdateDto
 	{
 	}
 }

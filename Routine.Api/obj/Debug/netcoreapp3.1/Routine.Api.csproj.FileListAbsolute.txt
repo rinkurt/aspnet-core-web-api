@@ -104,7 +104,6 @@ D:\Workspace\dotNet\Routine\Routine.Api\bin\Debug\netcoreapp3.1\runtimes\win-arm
 D:\Workspace\dotNet\Routine\Routine.Api\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\e_sqlite3.dll
 D:\Workspace\dotNet\Routine\Routine.Api\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\e_sqlite3.dll
 D:\Workspace\dotNet\Routine\Routine.Api\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
-D:\Workspace\dotNet\Routine\Routine.Api\obj\Debug\netcoreapp3.1\Routine.Api.csprojAssemblyReference.cache
 D:\Workspace\dotNet\Routine\Routine.Api\obj\Debug\netcoreapp3.1\Routine.Api.csproj.CoreCompileInputs.cache
 D:\Workspace\dotNet\Routine\Routine.Api\obj\Debug\netcoreapp3.1\Routine.Api.MvcApplicationPartsAssemblyInfo.cache
 D:\Workspace\dotNet\Routine\Routine.Api\obj\Debug\netcoreapp3.1\Routine.Api.AssemblyInfoInputs.cache
@@ -132,3 +131,4 @@ D:\Workspace\dotNet\Routine\Routine.Api\bin\Debug\netcoreapp3.1\runtimes\win-x86
 D:\Workspace\dotNet\Routine\Routine.Api\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\Workspace\dotNet\Routine\Routine.Api\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\Workspace\dotNet\Routine\Routine.Api\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Workspace\dotNet\Routine\Routine.Api\obj\Debug\netcoreapp3.1\Routine.Api.csprojAssemblyReference.cache

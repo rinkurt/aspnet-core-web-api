@@ -30,11 +30,29 @@ namespace Routine.Api
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddControllers(setup => 
-			{
-				setup.ReturnHttpNotAcceptable = true;
-				
-			}).AddXmlDataContractSerializerFormatters();
+			services.AddControllers(setup => { setup.ReturnHttpNotAcceptable = true; })
+				.AddXmlDataContractSerializerFormatters()
+				.ConfigureApiBehaviorOptions(setup =>
+				{
+					setup.InvalidModelStateResponseFactory = context =>
+					{
+						var problemDetails = new ValidationProblemDetails(context.ModelState)
+						{
+							Type = "http://www.baidu.com",
+							Title = "Error",
+							Status = StatusCodes.Status422UnprocessableEntity,
+							Detail = "RTFM",
+							Instance = context.HttpContext.Request.Path
+						};
+
+						problemDetails.Extensions.Add("traceId", context.HttpContext.TraceIdentifier);
+
+						return new UnprocessableEntityObjectResult(problemDetails)
+						{
+							ContentTypes = {"application/problem+json"}
+						};
+					};
+				});
 
 			services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 			
