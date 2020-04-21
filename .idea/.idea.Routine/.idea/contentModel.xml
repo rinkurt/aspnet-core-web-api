@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\user\.Rider2019.3\config\consoles\db" t="IncludeRecursive" />
-    <e p="C:\Users\user\.Rider2019.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\user\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Routine.88998341.00" t="ExcludeRecursive" />
+    <e p="C:\Users\user\AppData\local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\user\AppData\local\JetBrains\Rider2020.1\resharper-host\local\Transient\ReSharperHost\v201\SolutionCaches\_Routine.88998341.00" t="ExcludeRecursive" />
+    <e p="C:\Users\user\AppData\Roaming\JetBrains\Rider2020.1\consoles\db" t="IncludeRecursive" />
     <e p="D:\Workspace\dotNet\Routine" t="IncludeFlat">
       <e p="packages" t="ExcludeRecursive" />
       <e p="Routine.Api" t="IncludeRecursive">
@@ -17,14 +17,25 @@
         <e p="Data" t="Include">
           <e p="RoutineDbContext.cs" t="Include" />
         </e>
+        <e p="DtoParams" t="Include">
+          <e p="CompanyDtoParam.cs" t="Include" />
+          <e p="EmployeeDtoParam.cs" t="Include" />
+        </e>
         <e p="Dtos" t="Include">
+          <e p="CompanyAddDto.cs" t="Include" />
           <e p="CompanyDto.cs" t="Include" />
+          <e p="EmployeeAddDto.cs" t="Include" />
+          <e p="EmployeeAddOrUpdateDto.cs" t="Include" />
           <e p="EmployeeDto.cs" t="Include" />
+          <e p="EmployeeUpdateDto.cs" t="Include" />
         </e>
         <e p="Entities" t="Include">
           <e p="Company.cs" t="Include" />
           <e p="Employee.cs" t="Include" />
           <e p="Gender.cs" t="Include" />
+        </e>
+        <e p="Helpers" t="Include">
+          <e p="ArrayModelBinder.cs" t="Include" />
         </e>
         <e p="Migrations" t="Include">
           <e p="20200408050609_InitialMigration.cs" t="Include" />
@@ -54,6 +65,9 @@
           <e p="ICompanyRepository.cs" t="Include" />
         </e>
         <e p="Startup.cs" t="Include" />
+        <e p="Validations" t="Include">
+          <e p="ValidDateAttribute.cs" t="Include" />
+        </e>
       </e>
       <e p="Routine.sln" t="IncludeFlat" />
     </e>

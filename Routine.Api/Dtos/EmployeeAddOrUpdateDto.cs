@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Routine.Api.Entities;
-using Routine.Api.ValidAttrs;
+using Routine.Api.Validations;
 
 namespace Routine.Api.Dtos
 {

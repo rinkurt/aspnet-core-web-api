@@ -25,6 +25,7 @@ namespace Routine.Api.Profiles
 
             CreateMap<EmployeeAddDto, Employee>();
             CreateMap<EmployeeUpdateDto, Employee>();
+            CreateMap<Employee, EmployeeUpdateDto>();
 
         }
     }
