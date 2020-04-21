@@ -120,6 +120,8 @@ namespace Routine.Api.Services
             }
 
             var items = _context.Employees.Where(x => x.CompanyId == companyId);
+            
+            if (param == null) return await items.OrderBy(x => x.EmployeeNo).ToListAsync();
 
             if (!string.IsNullOrWhiteSpace(param.Gender))
             {

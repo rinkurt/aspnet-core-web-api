@@ -108,5 +108,23 @@ namespace Routine.Api.Controllers
 				new { ids = idsStr }, 
 				companyDtos);
 		}
+
+		[HttpDelete("{companyId}")]
+		public async Task<IActionResult> DeleteCompany(Guid companyId)
+		{
+			var company = await _companyRepository.GetCompanyAsync(companyId);
+
+			if (company == null)
+			{
+				return NotFound();
+			}
+
+			await _companyRepository.GetEmployeesAsync(companyId, null);
+
+			_companyRepository.DeleteCompany(company);
+			await _companyRepository.SaveAsync();
+
+			return NoContent();
+		}
 	}
 }

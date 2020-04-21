@@ -154,6 +154,27 @@ namespace Routine.Api.Controllers
 	        return NoContent();
         }
 
+        [HttpDelete("{employeeId}")]
+        public async Task<IActionResult> DeleteEmployeeForCompany(Guid companyId, Guid employeeId)
+        {
+	        if (! await _companyRepository.CompanyExistsAsync(companyId))
+	        {
+		        return NotFound();
+	        }
+
+	        var employee = await _companyRepository.GetEmployeeAsync(companyId, employeeId);
+
+	        if (employee == null)
+	        {
+		        return NotFound();
+	        }
+	        
+	        _companyRepository.DeleteEmployee(employee);
+	        await _companyRepository.SaveAsync();
+
+	        return NoContent();
+        }
+
         public override ActionResult ValidationProblem(ModelStateDictionary modelStateDictionary)
         {
 	        var options = HttpContext.RequestServices
