@@ -53,6 +53,30 @@ namespace Routine.Api.Data
 				},
 				new Company
 				{
+					Id = Guid.Parse("080d684e-21aa-46d8-8eb8-8c6709879f60"),
+					Name = "Google1",
+					Introduction = "Don't be evil"
+				},
+				new Company
+				{
+					Id = Guid.Parse("080d684e-21aa-46d8-8eb8-8c6709879f61"),
+					Name = "Google2",
+					Introduction = "Don't be evil"
+				},
+				new Company
+				{
+					Id = Guid.Parse("080d684e-21aa-46d8-8eb8-8c6709879f62"),
+					Name = "Google3",
+					Introduction = "Don't be evil"
+				},
+				new Company
+				{
+					Id = Guid.Parse("080d684e-21aa-46d8-8eb8-8c6709879f63"),
+					Name = "Google4",
+					Introduction = "Don't be evil"
+				},
+				new Company
+				{
 					Id = Guid.Parse("d76af422-8f46-429c-b576-ad4d62216861"),
 					Name = "Alibaba",
 					Introduction = "Fubao Company"
@@ -91,8 +115,38 @@ namespace Routine.Api.Data
                 },
                 new Employee
                 {
-                    Id = Guid.Parse("7644b71d-d74e-43e2-ac32-8cbadd7b1c3a"),
-                    CompanyId = Guid.Parse("080d684e-21aa-46d8-8eb8-8c6709879f59"),
+                    Id = Guid.Parse("7644b71d-d74e-43e2-ac32-8cbadd7b1c3b"),
+                    CompanyId = Guid.Parse("080d684e-21aa-46d8-8eb8-8c6709879f60"),
+                    DateOfBirth = new DateTime(1977, 4, 6),
+                    EmployeeNo = "G097",
+                    FirstName = "Kevin",
+                    LastName = "Richardson",
+                    Gender = Gender.Male
+                },
+                new Employee
+                {
+                    Id = Guid.Parse("7644b71d-d74e-43e2-ac32-8cbadd7b1c40"),
+                    CompanyId = Guid.Parse("080d684e-21aa-46d8-8eb8-8c6709879f61"),
+                    DateOfBirth = new DateTime(1977, 4, 6),
+                    EmployeeNo = "G097",
+                    FirstName = "Kevin",
+                    LastName = "Richardson",
+                    Gender = Gender.Male
+                },
+                new Employee
+                {
+                    Id = Guid.Parse("7644b71d-d74e-43e2-ac32-8cbadd7b1c41"),
+                    CompanyId = Guid.Parse("080d684e-21aa-46d8-8eb8-8c6709879f62"),
+                    DateOfBirth = new DateTime(1977, 4, 6),
+                    EmployeeNo = "G097",
+                    FirstName = "Kevin",
+                    LastName = "Richardson",
+                    Gender = Gender.Male
+                },
+                new Employee
+                {
+                    Id = Guid.Parse("7644b71d-d74e-43e2-ac32-8cbadd7b1c42"),
+                    CompanyId = Guid.Parse("080d684e-21aa-46d8-8eb8-8c6709879f63"),
                     DateOfBirth = new DateTime(1977, 4, 6),
                     EmployeeNo = "G097",
                     FirstName = "Kevin",

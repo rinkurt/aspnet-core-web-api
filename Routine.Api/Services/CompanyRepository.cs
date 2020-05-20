@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Routine.Api.Data;
 using Routine.Api.DtoParams;
 using Routine.Api.Entities;
+using Routine.Api.Helpers;
 
 namespace Routine.Api.Services
 {
@@ -18,7 +19,7 @@ namespace Routine.Api.Services
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public async Task<IEnumerable<Company>> GetCompaniesAsync(CompanyDtoParam param)
+        public async Task<PagedList<Company>> GetCompaniesAsync(CompanyDtoParam param)
         {
 	        if (param == null)
 	        {
@@ -39,7 +40,7 @@ namespace Routine.Api.Services
 		                                 x.Introduction.Contains(param.Query));
 	        }
 
-	        return await items.ToListAsync();
+	        return await PagedList<Company>.CreateAsync(items, param.PageNumber, param.PageSize);
         }
 
         public async Task<Company> GetCompanyAsync(Guid companyId)

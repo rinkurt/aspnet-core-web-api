@@ -8,6 +8,8 @@ using Routine.Api.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Encodings.Web;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Routine.Api.Controllers
@@ -26,12 +28,37 @@ namespace Routine.Api.Controllers
 			_mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
 		}
 
-		[HttpGet]
+		[HttpGet(Name = nameof(GetCompanies))]
 		[HttpHead]
 		public async Task<ActionResult<IEnumerable<CompanyDto>>>
 			GetCompanies([FromQuery] CompanyDtoParam param)
 		{
 			var companies = await _companyRepository.GetCompaniesAsync(param);
+
+			var previousPageLink = companies.HasPrevious
+				? CreateCompaniesResourceUri(param, ResourceUriType.PreviousPage)
+				: null;
+
+			var nextPageLink = companies.HasNext
+				? CreateCompaniesResourceUri(param, ResourceUriType.NextPage)
+				: null;
+
+			var paginationMetadata = new
+			{
+				totalCount = companies.TotalCount,
+				pageSize = companies.PageSize,
+				currentPage = companies.CurrentPage,
+				totalPages = companies.TotalPages,
+				previousPageLink,
+				nextPageLink
+			};
+
+			Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(paginationMetadata,
+				new JsonSerializerOptions
+				{
+					Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+				}));
+
 			return Ok(_mapper.Map<IEnumerable<CompanyDto>>(companies));
 		}
 
@@ -125,6 +152,39 @@ namespace Routine.Api.Controllers
 			await _companyRepository.SaveAsync();
 
 			return NoContent();
+		}
+
+		private string CreateCompaniesResourceUri(CompanyDtoParam param, ResourceUriType type)
+		{
+			switch (type)
+			{
+				case ResourceUriType.PreviousPage:
+					return Url.Link(nameof(GetCompanies), new
+					{
+						pageNumber = param.PageNumber - 1,
+						pageSize = param.PageSize,
+						name = param.Name,
+						query = param.Query
+					});
+
+				case ResourceUriType.NextPage:
+					return Url.Link(nameof(GetCompanies), new
+					{
+						pageNumber = param.PageNumber + 1,
+						pageSize = param.PageSize,
+						name = param.Name,
+						query = param.Query
+					});
+
+				default:
+					return Url.Link(nameof(GetCompanies), new
+					{
+						pageNumber = param.PageNumber,
+						pageSize = param.PageSize,
+						name = param.Name,
+						query = param.Query
+					});
+			}
 		}
 	}
 }

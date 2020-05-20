@@ -4,12 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Routine.Api.DtoParams;
 using Routine.Api.Entities;
+using Routine.Api.Helpers;
 
 namespace Routine.Api.Services
 {
 	public interface ICompanyRepository
 	{
-		Task<IEnumerable<Company>> GetCompaniesAsync(CompanyDtoParam param);
+		Task<PagedList<Company>> GetCompaniesAsync(CompanyDtoParam param);
 		Task<Company> GetCompanyAsync(Guid companyId);
 		Task<IEnumerable<Company>> GetCompaniesAsync(IEnumerable<Guid> companyIds);
 		void AddCompany(Company company);
