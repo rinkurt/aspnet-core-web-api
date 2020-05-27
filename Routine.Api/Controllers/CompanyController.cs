@@ -6,8 +6,11 @@ using Routine.Api.Entities;
 using Routine.Api.Helpers;
 using Routine.Api.Services;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
+using System.Reflection;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -63,14 +66,20 @@ namespace Routine.Api.Controllers
 		}
 
 		[HttpGet("{companyId}", Name = nameof(GetCompany))]
-		public async Task<ActionResult<CompanyDto>> GetCompany(Guid companyId)
+		public async Task<IActionResult> GetCompany(Guid companyId)
 		{
 			var company = await _companyRepository.GetCompanyAsync(companyId);
+			
 			if (company == null)
 			{
 				return NotFound();
 			}
-			return Ok(_mapper.Map<CompanyDto>(company));
+
+			var companyDto = _mapper.Map<CompanyDto>(company);
+
+			companyDto.Links = CreateLinksForCompany(companyId);
+
+			return Ok(companyDto);
 		}
 
 		[HttpPost]
@@ -136,7 +145,7 @@ namespace Routine.Api.Controllers
 				companyDtos);
 		}
 
-		[HttpDelete("{companyId}")]
+		[HttpDelete("{companyId}", Name = nameof(DeleteCompany))]
 		public async Task<IActionResult> DeleteCompany(Guid companyId)
 		{
 			var company = await _companyRepository.GetCompanyAsync(companyId);
@@ -185,6 +194,22 @@ namespace Routine.Api.Controllers
 						query = param.Query
 					});
 			}
+		}
+
+		private IEnumerable<LinkDto> CreateLinksForCompany(Guid companyId)
+		{
+			var links = new List<LinkDto>
+			{
+				new LinkDto(
+					Url.Link(nameof(GetCompany), new {companyId}),
+					"self", "GET"),
+
+				new LinkDto(
+					Url.Link(nameof(DeleteCompany), new {companyId}),
+					"delete_company", "DELETE")
+			};
+
+			return links;
 		}
 	}
 }

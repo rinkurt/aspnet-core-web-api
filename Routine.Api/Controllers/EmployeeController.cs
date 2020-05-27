@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
@@ -41,8 +42,10 @@ namespace Routine.Api.Controllers
         }
 
         [HttpGet("{employeeId}", Name = nameof(GetEmployeeForCompany))]
+		[ResponseCache(Duration = 120)]
         public async Task<ActionResult<EmployeeDto>> GetEmployeeForCompany(Guid companyId, Guid employeeId)
         {
+			//Console.WriteLine("GetEmployeeForCompany");
             var employee = await _companyRepository.GetEmployeeAsync(companyId, employeeId);
             if (employee == null)
             {

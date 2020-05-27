@@ -8,5 +8,6 @@ namespace Routine.Api.Dtos
     {
         public Guid Id { get; set; }
         public string CompanyName { get; set; }
+        public IEnumerable<LinkDto> Links { get; set; } = new List<LinkDto>();
     }
 }

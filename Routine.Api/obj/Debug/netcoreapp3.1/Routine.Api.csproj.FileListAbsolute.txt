@@ -104,8 +104,6 @@ D:\Workspace\dotNet\Routine\Routine.Api\bin\Debug\netcoreapp3.1\runtimes\win-arm
 D:\Workspace\dotNet\Routine\Routine.Api\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\e_sqlite3.dll
 D:\Workspace\dotNet\Routine\Routine.Api\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\e_sqlite3.dll
 D:\Workspace\dotNet\Routine\Routine.Api\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
-D:\Workspace\dotNet\Routine\Routine.Api\obj\Debug\netcoreapp3.1\Routine.Api.csproj.CoreCompileInputs.cache
-D:\Workspace\dotNet\Routine\Routine.Api\obj\Debug\netcoreapp3.1\Routine.Api.MvcApplicationPartsAssemblyInfo.cache
 D:\Workspace\dotNet\Routine\Routine.Api\obj\Debug\netcoreapp3.1\Routine.Api.AssemblyInfoInputs.cache
 D:\Workspace\dotNet\Routine\Routine.Api\obj\Debug\netcoreapp3.1\Routine.Api.AssemblyInfo.cs
 D:\Workspace\dotNet\Routine\Routine.Api\obj\Debug\netcoreapp3.1\Routine.Api.RazorTargetAssemblyInfo.cache
@@ -136,3 +134,6 @@ D:\Workspace\dotNet\Routine\Routine.Api\bin\Debug\netcoreapp3.1\Microsoft.AspNet
 D:\Workspace\dotNet\Routine\Routine.Api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 D:\Workspace\dotNet\Routine\Routine.Api\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 D:\Workspace\dotNet\Routine\Routine.Api\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+D:\Workspace\dotNet\Routine\Routine.Api\bin\Debug\netcoreapp3.1\System.Linq.Dynamic.Core.dll
+D:\Workspace\dotNet\Routine\Routine.Api\obj\Debug\netcoreapp3.1\Routine.Api.csproj.CoreCompileInputs.cache
+D:\Workspace\dotNet\Routine\Routine.Api\obj\Debug\netcoreapp3.1\Routine.Api.MvcApplicationPartsAssemblyInfo.cache

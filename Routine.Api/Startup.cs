@@ -31,6 +31,8 @@ namespace Routine.Api
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddResponseCaching();
+
 			services.AddControllers(setup => { setup.ReturnHttpNotAcceptable = true; })
 				.AddNewtonsoftJson(setup =>
 				{
@@ -67,6 +69,8 @@ namespace Routine.Api
 			{
 				option.UseSqlite("Data Source=routine.db");
 			});
+
+			services.AddTransient<IPropertyMappingService, PropertyMappingService>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -87,6 +91,8 @@ namespace Routine.Api
 					});
 				});
 			}
+
+			app.UseResponseCaching();
 
 			app.UseRouting();
 

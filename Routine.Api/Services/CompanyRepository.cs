@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Routine.Api.Data;
 using Routine.Api.DtoParams;
+using Routine.Api.Dtos;
 using Routine.Api.Entities;
 using Routine.Api.Helpers;
 
@@ -13,11 +14,14 @@ namespace Routine.Api.Services
 	public class CompanyRepository: ICompanyRepository
 	{
 		private readonly RoutineDbContext _context;
+		private readonly IPropertyMappingService _propertyMappingService;
 
-        public CompanyRepository(RoutineDbContext context)
-        {
-            _context = context ?? throw new ArgumentNullException(nameof(context));
-        }
+		public CompanyRepository(RoutineDbContext context, IPropertyMappingService propertyMappingService)
+		{
+			_context = context ?? throw new ArgumentNullException(nameof(context));
+			_propertyMappingService = propertyMappingService ??
+				throw new ArgumentNullException(nameof(propertyMappingService));
+		}
 
         public async Task<PagedList<Company>> GetCompaniesAsync(CompanyDtoParam param)
         {
@@ -39,6 +43,8 @@ namespace Routine.Api.Services
 		        items = items.Where(x => x.Name.Contains(param.Query) ||
 		                                 x.Introduction.Contains(param.Query));
 	        }
+
+	        var mappingDictionary = _propertyMappingService.GetPropertyMapping<EmployeeDto, Employee>();
 
 	        return await PagedList<Company>.CreateAsync(items, param.PageNumber, param.PageSize);
         }
@@ -113,7 +119,8 @@ namespace Routine.Api.Services
             return await _context.Companies.AnyAsync(x => x.Id == companyId);
         }
 
-        public async Task<IEnumerable<Employee>> GetEmployeesAsync(Guid companyId, EmployeeDtoParam param)
+        public async Task<IEnumerable<Employee>> GetEmployeesAsync(
+	        Guid companyId, EmployeeDtoParam param)
         {
             if (companyId == Guid.Empty)
             {
@@ -136,8 +143,11 @@ namespace Routine.Api.Services
 	                                     x.FirstName.Contains(param.Query) || 
 	                                     x.LastName.Contains(param.Query));
             }
+
+            var mappingDictionary = _propertyMappingService.GetPropertyMapping<EmployeeDto, Employee>();
+            items = items.ApplySort(param.OrderBy, mappingDictionary);
             
-            return await items.OrderBy(x => x.EmployeeNo).ToListAsync();
+            return await items.ToListAsync();
         }
 
         public async Task<Employee> GetEmployeeAsync(Guid companyId, Guid employeeId)
